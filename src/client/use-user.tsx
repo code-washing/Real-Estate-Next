@@ -29,7 +29,7 @@ export type UserContext = {
   user?: UserProfile;
   error?: Error;
   isLoading: boolean;
-  checkSession: () => Promise<void>;
+  checkSession: () => Promise<void>; 
 };
 
 /**
@@ -49,7 +49,7 @@ export class RequestError extends Error {
   constructor(status: number) {
     /* c8 ignore next */
     super();
-    this.status = status;
+    this.status = status; 
     Object.setPrototypeOf(this, RequestError.prototype);
   }
 }
