@@ -85,17 +85,17 @@ const withPageAuthRequired: WithPageAuthRequired = (Component, options = {}) => 
       let returnToPath: string;
 
       if (!returnTo) {
-        const currentLocation = window.location.toString();
-        returnToPath = currentLocation.replace(new URL(currentLocation).origin, '') || '/';
+        const currentLocation = window.location.toString(); 
+        returnToPath = currentLocation.replace(new URL(currentLocation).origin, '') || '/';  
       } else {
-        returnToPath = returnTo;
+        returnToPath = returnTo; 
       }
 
       window.location.assign(`${loginUrl}?returnTo=${encodeURIComponent(returnToPath)}`);
     }, [user, error, isLoading]);
 
-    if (error) return onError(error);
-    if (user) return <Component user={user} {...(props as any)} />;
+    if (error) return onError(error); 
+    if (user) return <Component user={user} {...(props as any)} />;  
 
     return onRedirecting();
   };
