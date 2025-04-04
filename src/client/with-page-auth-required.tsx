@@ -12,14 +12,14 @@ const defaultOnRedirecting = (): JSX.Element => <></>;
 /**
  * @ignore
  */
-const defaultOnError = (): JSX.Element => <></>;
+const defaultOnError = (): JSX.Element => <></>; 
 
 /**
  * Options to customize the withPageAuthRequired higher order component.
  *
  * @category Client
  */
-export interface WithPageAuthRequiredOptions {
+export interface WithPageAuthRequiredOptions { 
   /**
    * ```js
    * withPageAuthRequired(Profile, {
@@ -29,7 +29,7 @@ export interface WithPageAuthRequiredOptions {
    *
    * Add a path to return the user to after login.
    */
-  returnTo?: string;
+  returnTo?: string; 
   /**
    * ```js
    * withPageAuthRequired(Profile, {
@@ -37,24 +37,24 @@ export interface WithPageAuthRequiredOptions {
    * });
    * ```
    *
-   * Render a message to show that the user is being redirected to the login.
+   * Render a message to show that the user is being redirected to the login.  
    */
-  onRedirecting?: () => JSX.Element;
+  onRedirecting?: () => JSX.Element; 
   /**
    * ```js
    * withPageAuthRequired(Profile, {
-   *   onError: error => <div>Error: {error.message}</div>
+   *   onError: error => <div>Error: {error.message}</div>  
    * });
    * ```
    *
    * Render a fallback in case of error fetching the user from the profile API route.
    */
-  onError?: (error: Error) => JSX.Element;
+  onError?: (error: Error) => JSX.Element; 
 }
 
-export interface UserProps {
-  user: UserProfile;
-}
+export interface UserProps { 
+  user: UserProfile; 
+}  
 
 /**
  * ```js
@@ -67,9 +67,9 @@ export interface UserProps {
  * @category Client
  */
 export type WithPageAuthRequired = <P extends {}>(
-  Component: ComponentType<P & UserProps>,
-  options?: WithPageAuthRequiredOptions
-) => React.FC<P>;
+  Component: ComponentType<P & UserProps>,  
+  options?: WithPageAuthRequiredOptions  
+) => React.FC<P>;  
 
 /**
  * @ignore
@@ -77,8 +77,8 @@ export type WithPageAuthRequired = <P extends {}>(
 const withPageAuthRequired: WithPageAuthRequired = (Component, options = {}) => {
   return function WithPageAuthRequired(props): JSX.Element {
     const { returnTo, onRedirecting = defaultOnRedirecting, onError = defaultOnError } = options;
-    const { loginUrl } = useConfig();
-    const { user, error, isLoading } = useUser();
+    const { loginUrl } = useConfig();  
+    const { user, error, isLoading } = useUser();  
 
     useEffect(() => {
       if ((user && !error) || isLoading) return;
@@ -88,10 +88,10 @@ const withPageAuthRequired: WithPageAuthRequired = (Component, options = {}) => 
         const currentLocation = window.location.toString(); 
         returnToPath = currentLocation.replace(new URL(currentLocation).origin, '') || '/';  
       } else {
-        returnToPath = returnTo; 
+        returnToPath = returnTo;    
       }
 
-      window.location.assign(`${loginUrl}?returnTo=${encodeURIComponent(returnToPath)}`);
+      window.location.assign(`${loginUrl}?returnTo=${encodeURIComponent(returnToPath)}`);   
     }, [user, error, isLoading]);
 
     if (error) return onError(error); 
