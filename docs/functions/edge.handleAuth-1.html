@@ -3,14 +3,14 @@
 <p>Simply set the environment variables per <a href="../types/config.ConfigParameters.html" class="tsd-kind-type-alias">ConfigParameters</a> then create the file
 <code>pages/api/auth/[auth0].js</code>. For example:</p>
 <pre><code class="language-js"><span class="hl-0">// pages/api/auth/[auth0].js</span><br/><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-3">handleAuth</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-4">&#39;@auth0/nextjs-auth0&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-1">export</span><span class="hl-2"> </span><span class="hl-1">default</span><span class="hl-2"> </span><span class="hl-6">handleAuth</span><span class="hl-2">();</span>
-</code><button>Copy</button></pre>
-<p><em>App Router</em></p>
+</code><button>Copy</button></pre> 
+<p><em>App Router</em></p>   
 <p>Simply set the environment variables per <a href="../types/config.ConfigParameters.html" class="tsd-kind-type-alias">ConfigParameters</a> then create the file
-<code>app/api/auth/[auth0]/route.js</code>. For example:</p>
+<code>app/api/auth/[auth0]/route.js</code>. For example:</p>  
 <pre><code class="language-js"><span class="hl-0">// app/api/auth/[auth0]/route.js</span><br/><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-3">handleAuth</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-4">&#39;@auth0/nextjs-auth0&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-1">export</span><span class="hl-2"> </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-7">GET</span><span class="hl-2"> = </span><span class="hl-6">handleAuth</span><span class="hl-2">();</span>
-</code><button>Copy</button></pre>
-<p>This will create 5 handlers for the following urls:</p>
-<ul>
+</code><button>Copy</button></pre>  
+<p>This will create 5 handlers for the following urls:</p>  
+<ul>  
 <li><code>/api/auth/login</code>: log the user in to your app by redirecting them to your identity provider.</li>
 <li><code>/api/auth/callback</code>: The page that your identity provider will redirect the user back to on login.</li>
 <li><code>/api/auth/logout</code>: log the user out of your app.</li>
